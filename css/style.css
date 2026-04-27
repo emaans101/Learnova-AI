@@ -33,6 +33,10 @@ select {
   gap: 12px;
 }
 
+.top-left {
+  gap: 10px;
+}
+
 .top-center {
   flex: 1;
   display: flex;
@@ -40,27 +44,50 @@ select {
 }
 
 .status-dot {
-  width: 18px;
-  height: 18px;
+  width: 14px;
+  height: 14px;
   border-radius: 50%;
   background: #ec4899;
-  border: 3px solid #22c55e;
+  box-shadow: 0 0 0 4px rgba(236, 72, 153, 0.16);
+}
+
+.top-chip {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 14px 8px 8px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.12);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.12);
 }
 
 .top-icon {
-  width: 34px;
-  height: 34px;
+  width: 38px;
+  height: 38px;
   display: grid;
   place-items: center;
-  background: rgba(255, 255, 255, 0.35);
-  border-radius: 12px;
-  font-size: 16px;
+  background: rgba(255, 255, 255, 0.22);
+  border-radius: 14px;
+  font-size: 17px;
+}
+
+.top-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
 }
 
 .top-label {
   font-weight: 700;
   font-size: 13px;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.01em;
+}
+
+.top-subtitle {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.8);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
 }
 
 .dropdown {
@@ -188,16 +215,11 @@ nav {
 
 
 .content {
-  padding: 22px 22px 30px 22px;
-}
-
-
-.content {
-  padding: 22px 22px 30px 22px;
+  padding: 20px 20px 28px;
 }
 
 .page-intro {
-  margin-bottom: 20px;
+  margin-bottom: 18px;
 }
 
 .page-intro h1 {
@@ -214,21 +236,21 @@ nav {
 }
 
 .card-text {
-  margin: 14px 0 0;
+  margin: 12px 0 0;
   color: #475569;
-  line-height: 1.7;
+  line-height: 1.6;
 }
 
 .dashboard-grid {
   display: grid;
-  gap: 30px;
+  gap: 22px;
   grid-template-columns: 1.1fr 1fr;
 }
 
 .summary-cards,
 .side-cards {
   display: grid;
-  gap: 26px;
+  gap: 18px;
 }
 
 .summary-cards {
@@ -237,9 +259,9 @@ nav {
 
 .card {
   background: white;
-  border-radius: 18px;
-  padding: 18px;
-  box-shadow: 0 16px 34px rgba(15, 23, 42, 0.08);
+  border-radius: 16px;
+  padding: 16px;
+  box-shadow: 0 12px 28px rgba(15, 23, 42, 0.08);
 }
 
 .card-title {

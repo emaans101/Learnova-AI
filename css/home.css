@@ -50,23 +50,23 @@
   display: flex;
   align-items: stretch;
   justify-content: center;
-  min-height: 170px;
+  min-height: 0;
 }
 
 .rings-layout {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 164px;
-  align-items: center;
-  gap: 14px;
+  grid-template-columns: minmax(0, 1fr);
+  align-items: start;
+  gap: 18px;
   width: 100%;
-  min-height: 170px;
+  min-height: 0;
 }
 
 .rings-copy {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  min-height: 140px;
+  gap: 10px;
+  min-height: 0;
   flex: 1;
 }
 
@@ -78,27 +78,30 @@
 }
 
 .ring-list {
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-  gap: 14px;
-  width: 164px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  width: 100%;
   flex-shrink: 0;
 }
 
 .ring-stat {
-  display: grid;
-  grid-template-columns: 54px minmax(0, 1fr) auto;
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 10px;
-  width: 164px;
-  text-align: left;
+  gap: 8px;
+  min-height: 120px;
+  padding: 12px 10px;
+  text-align: center;
+  border-radius: 14px;
+  background: #f8fafc;
+  box-shadow: inset 0 0 0 1px #e2e8f0;
 }
 
 .ring-wrap {
   position: relative;
-  width: 54px;
-  height: 54px;
+  width: 48px;
+  height: 48px;
 }
 
 .arc-ring {
@@ -120,7 +123,7 @@
 
 .ring-hole {
   position: absolute;
-  inset: 7px;
+  inset: 6px;
   border-radius: 50%;
   background: #ffffff;
 }
@@ -131,7 +134,7 @@
 }
 
 .ring-stat strong {
-  font-size: 12px;
+  font-size: 13px;
   color: #0f172a;
   white-space: nowrap;
 }
@@ -140,30 +143,43 @@
   color: #475569;
   font-size: 12px;
   font-weight: 700;
-  white-space: nowrap;
+  white-space: normal;
 }
 
 .ring-summary {
   margin: 0;
   color: #64748b;
   line-height: 1.55;
-  max-width: 215px;
+  max-width: 100%;
 }
 
 @media (max-width: 900px) {
-  .rings-layout {
-    flex-direction: column;
-    align-items: stretch;
-    grid-template-columns: 1fr;
-  }
-
-  .ring-list {
-    width: 100%;
-  }
-
   .ring-stat {
-    width: 100%;
-    text-align: left;
+    min-height: 108px;
+    padding: 10px 8px;
+  }
+
+  .ring-wrap {
+    width: 42px;
+    height: 42px;
+  }
+
+  .ring-hole {
+    inset: 5px;
+  }
+
+  .ring-stat strong,
+  .ring-stat span {
+    white-space: normal;
+    text-align: center;
+  }
+
+  .ring-stat strong {
+    font-size: 12px;
+  }
+
+  .ring-stat span {
+    font-size: 11px;
   }
 }
 
@@ -194,38 +210,109 @@
 }
 
 .most-asked-card .bar-list {
-  display: grid;
-  gap: 14px;
+  display: flex;
+  align-items: flex-end;
+  gap: 10px;
+  margin-top: 18px;
+  min-height: 236px;
+}
+
+.bar-group {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
 }
 
 .bar-item {
+  width: 100%;
+  border-radius: 999px;
+  box-shadow: 0 12px 24px rgba(15, 23, 42, 0.08);
+}
+
+.bar-meta {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: space-between;
-  padding: 16px;
-  border-radius: 18px;
-  color: white;
+  gap: 4px;
+  text-align: center;
+}
+
+.bar-meta strong {
+  font-size: 12px;
+  color: #0f172a;
+}
+
+.bar-meta span {
+  font-size: 10px;
   font-weight: 700;
+  color: #64748b;
 }
 
 .bar-item.gold {
-  background: linear-gradient(135deg, #eab308, #facc15);
+  height: 156px;
+  background: linear-gradient(180deg, #efcf61, #e9c85a);
 }
 
 .bar-item.blue {
-  background: linear-gradient(135deg, #3b82f6, #0ea5e9);
+  height: 180px;
+  background: linear-gradient(180deg, #5e85df, #557cda);
 }
 
-.bar-item.red {
-  background: linear-gradient(135deg, #ec4899, #f43f5e);
+.bar-item.pink {
+  height: 196px;
+  background: linear-gradient(180deg, #f62f7a, #f52b78);
 }
 
 .bar-item.purple {
-  background: linear-gradient(135deg, #a855f7, #d946ef);
+  height: 168px;
+  background: linear-gradient(180deg, #b668f2, #a855f7);
 }
 
 .bar-item.teal {
-  background: linear-gradient(135deg, #14b8a6, #06b6d4);
+  height: 144px;
+  background: linear-gradient(180deg, #33c7bd, #16b5a9);
+}
+
+@media (max-width: 720px) {
+  .most-asked-card .bar-list {
+    gap: 8px;
+    min-height: 188px;
+  }
+
+  .bar-group {
+    gap: 8px;
+  }
+
+  .bar-meta strong {
+    font-size: 11px;
+  }
+
+  .bar-meta span {
+    font-size: 9px;
+  }
+
+  .bar-item.gold {
+    height: 124px;
+  }
+
+  .bar-item.blue {
+    height: 142px;
+  }
+
+  .bar-item.pink {
+    height: 154px;
+  }
+
+  .bar-item.purple {
+    height: 132px;
+  }
+
+  .bar-item.teal {
+    height: 116px;
+  }
 }
 
 .leaderboard-card {
@@ -626,7 +713,7 @@
     grid-template-columns: 1fr;
   }
   .summary-cards {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
   .leaderboard-summary-grid {
     grid-template-columns: 1fr;
@@ -641,6 +728,10 @@
 }
 
 @media (max-width: 720px) {
+  .dashboard-grid {
+    gap: 18px;
+  }
+
   .summary-cards {
     grid-template-columns: 1fr;
   }
