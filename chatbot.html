@@ -8,28 +8,96 @@
 </head>
 
 <script>
+const tutorState = {
+    currentTopic: null,
+    hasAttempt: false
+};
+
 function sendMessage() {
     let input = document.getElementById("userInput");
-    let message = input.value;
-
+    let message = input.value.trim();
     if (message === "") return;
 
-    let chat = document.getElementById("chatMessages");
-
-    // User message
-    let userMsg = document.createElement("div");
-    userMsg.className = "user";
-    userMsg.innerText = message;
-    chat.appendChild(userMsg);
-
-    // Bot reply (simple demo)
-    let botMsg = document.createElement("div");
-    botMsg.className = "bot";
-    botMsg.innerText = "You said: " + message;
-    chat.appendChild(botMsg);
-
+    appendMessage("user", message);
     input.value = "";
+
+    setTimeout(() => {
+        appendMessage("bot", generateSocraticReply(message));
+    }, 250);
+}
+
+function appendMessage(role, text) {
+    let chat = document.getElementById("chatMessages");
+    let msg = document.createElement("div");
+    msg.className = role;
+    msg.innerText = text;
+    chat.appendChild(msg);
     chat.scrollTop = chat.scrollHeight;
+}
+
+function generateSocraticReply(text) {
+    let normalized = text.toLowerCase();
+    let detectedTopic = extractTopic(normalized);
+    let topic = detectedTopic || tutorState.currentTopic;
+    let hasAttempt = detectAttempt(normalized);
+    let asksForHelp = /\b(stuck|don't understand|dont understand|can't|cant|help me|how do i|how do we|why|what is|explain|solve|answer)\b/.test(normalized);
+    let lowEffortUncertainty = /\b(i'm not sure|im not sure|i'm lost|im lost|i don't know|idk|not sure)\b/.test(normalized);
+
+    if (detectedTopic) {
+        tutorState.currentTopic = detectedTopic;
+    }
+
+    if (hasAttempt) {
+        tutorState.hasAttempt = true;
+    }
+
+    if (/\b(hello|hi|hey|good morning|good afternoon|good evening)\b/.test(normalized)) {
+        return "Hi! What topic are you working on today? Try sharing what you think the answer might be or the step you already tried.";
+    }
+
+    if (/\b(thank|thanks|great|ok|okay|nice)\b/.test(normalized)) {
+        return "You’re welcome! Is there another step you want to explore or another topic you'd like to review?";
+    }
+
+    if ((asksForHelp || lowEffortUncertainty) && !tutorState.hasAttempt) {
+        if (topic) {
+            return `Before I help with ${topic}, show me your own attempt first. What answer did you try, or what first step have you already taken?`;
+        }
+        return "Show me your own attempt first. Tell me the topic, what answer you tried, or the first step you worked on.";
+    }
+
+    if (hasAttempt) {
+        if (topic) {
+            return `Nice, that gives us something to work with for ${topic}. Which part of your attempt feels strongest, and where do you think it starts to go off track?`;
+        }
+        return "Good, now we have an attempt to build from. Which step felt right, and where did you start getting stuck?";
+    }
+
+    if (/\b(i know|i understand|i think|i learned|i remember|i believe)\b/.test(normalized)) {
+        if (topic) {
+            return `That’s a useful start for ${topic}. What step would you try next before asking for the full explanation?`;
+        }
+        return "That’s a useful start. What step would you try next before asking for the full explanation?";
+    }
+
+    return topic
+        ? `What have you tried so far for ${topic}? I’ll jump in once you show me a step or an answer you already worked on.`
+        : "Tell me the topic and show me a step, idea, or answer you already tried so I can guide you from there.";
+}
+
+function extractTopic(text) {
+    let topics = ["pythagorean theorem", "triangle", "equation", "grammar", "essay", "photosynthesis", "algebra", "history", "chemistry", "fractions"];
+    for (let topic of topics) {
+        if (text.includes(topic)) return topic;
+    }
+    let match = text.match(/\b(on|about|with|in) ([a-z ]+)\b/);
+    return match ? match[2].trim() : null;
+}
+
+function detectAttempt(text) {
+    return /\b(i tried|i think|my answer|my attempt|i got|i used|i solved|i wrote|i worked out|i calculated|i started|first i|i know|i believe|i found|i did)\b/.test(text)
+        || /\d/.test(text)
+        || /[=+\-*/^]/.test(text);
 }
 </script>
 
@@ -96,7 +164,13 @@ function sendMessage() {
       <div class="chat-header">Chatbot</div>
 
       <div class="chat-messages" id="chatMessages">
-        <div class="bot">Hello! How can I help?</div>
+        <div class="bot">Hello! I can help after you show me your own attempt. Tell me the topic and what you've tried so far.</div>
+        <div class="user">I'm having trouble with the Pythagorean theorem.</div>
+        <div class="bot">Show me your attempt first. What formula, step, or answer have you already tried?</div>
+        <div class="user">I tried a² + b² = c², and I know the hypotenuse is the longest side.</div>
+        <div class="bot">Good start. Which sides are you using for a and b, and where does your attempt begin to feel uncertain?</div>
+        <div class="user">I used the two shorter sides, but I’m not sure why squaring them works.</div>
+        <div class="bot">That gives us a real step to work from. What do you notice when the areas built on the shorter sides are compared with the area on the longest side?</div>
       </div>
 
       <div class="chat-input">

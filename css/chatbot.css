@@ -1,11 +1,12 @@
 /* CHATBOX */
 .chatbox {
-    margin-top: 20px;
+    margin: 20px auto 0;
     background: white;
-    border-radius: 14px;
-    padding: 12px;
+    border-radius: 20px;
+    padding: 24px;
     width: 100%;
-    box-shadow: 0 6px 15px rgba(0,0,0,0.08);
+    max-width: 980px;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
 }
 
 /* HEADER */
@@ -16,23 +17,25 @@
     color: #1E1E1E;
 }
 
-/* MESSAGES AREA (your original height kept) */
+/* MESSAGES AREA */
 .chat-messages {
-    height: 200px;  /* 👈 your original */
+    min-height: 360px;
+    max-height: calc(100vh - 260px);
     overflow-y: auto;
     background: #f9fafb;
-    padding: 10px;
-    border-radius: 10px;
+    padding: 18px;
+    border-radius: 16px;
     scroll-behavior: smooth;
 }
 
 /* MESSAGE BASE */
 .bot, .user {
-    margin: 5px 0;
-    padding: 8px 10px;
-    border-radius: 10px;
-    max-width: 70%;
-    font-size: 14px;
+    margin: 8px 0;
+    padding: 12px 14px;
+    border-radius: 16px;
+    max-width: 82%;
+    font-size: 15px;
+    line-height: 1.6;
 }
 
 /* BOT */
@@ -51,17 +54,20 @@
 /* INPUT AREA */
 .chat-input {
     display: flex;
-    margin-top: 10px;
-    gap: 6px;
+    margin-top: 18px;
+    gap: 12px;
+    align-items: center;
 }
 
 /* INPUT */
 .chat-input input {
     flex: 1;
-    padding: 8px;
-    border-radius: 8px;
-    border: 1px solid #ccc;
+    padding: 14px 16px;
+    border-radius: 16px;
+    border: 1px solid #d1d5db;
     outline: none;
+    min-height: 50px;
+    font-size: 15px;
 }
 
 /* FOCUS EFFECT */
