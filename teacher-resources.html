@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Teacher Resources</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/teacher.css">
+  <link rel="icon" type="image/png" href="assets/logo.png">
+</head>
+
+<body>
+
+  <header class="top-bar teacher-top-bar">
+    <div class="top-left">
+      <div class="status-dot"></div>
+      <div class="top-chip">
+        <div class="top-icon">T</div>
+        <div class="top-copy">
+          <div class="top-label">Teacher view</div>
+          <div class="top-subtitle">Resource management</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="top-center">
+      <select class="dropdown">
+        <option>Class 1A</option>
+        <option>Class 1B</option>
+        <option>Class 2A</option>
+      </select>
+    </div>
+
+    <div class="top-right">
+      <img src="assets/profile.png" alt="Profile" class="profile-avatar">
+      <span class="profile-name">Ms. Rivera</span>
+    </div>
+  </header>
+
+  <div class="container">
+    <aside class="sidebar">
+      <nav>
+        <a href="teacher-dashboard.html" class="nav-item">
+          <span class="nav-icon">🏠</span>
+          Home
+        </a>
+        <a href="teacher-students.html" class="nav-item">
+          <span class="nav-icon">🧑‍🎓</span>
+          Students
+        </a>
+        <a href="teacher-resources.html" class="nav-item active">
+          <span class="nav-icon">📚</span>
+          Resources
+        </a>
+      </nav>
+      <a href="index.html" class="teacher-btn teacher-btn-alt">
+        Student View
+      </a>
+    </aside>
+
+    <main class="content">
+      <div class="page-intro">
+        <h1>Resources</h1>
+        <p>Publish and track class resources. This page is frontend-only and designed to be connected to upload and analytics APIs later.</p>
+      </div>
+
+      <div class="teacher-resource-grid">
+        <article class="card">
+          <div class="card-title">Actions</div>
+          <div class="teacher-actions">
+            <button class="action-button" type="button">Upload worksheet</button>
+            <button class="action-button" type="button">Share video lesson</button>
+            <button class="action-button" type="button">Post class announcement</button>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-title">Latest uploads</div>
+          <ul class="resource-list">
+            <li><strong>Algebra Practice Set A</strong><span>Uploaded 12 min ago</span></li>
+            <li><strong>Reading Comprehension Week 4</strong><span>Uploaded 1 hour ago</span></li>
+            <li><strong>Science Lab Safety Slides</strong><span>Uploaded yesterday</span></li>
+          </ul>
+        </article>
+      </div>
+    </main>
+  </div>
+
+</body>
+</html>

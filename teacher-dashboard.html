@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Teacher Dashboard</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/teacher.css">
+  <link rel="icon" type="image/png" href="assets/logo.png">
+</head>
+
+<body>
+
+  <header class="top-bar teacher-top-bar">
+    <div class="top-left">
+      <div class="status-dot"></div>
+      <div class="top-chip">
+        <div class="top-icon">T</div>
+        <div class="top-copy">
+          <div class="top-label">Teacher view</div>
+          <div class="top-subtitle">Class monitoring</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="top-center">
+      <select class="dropdown">
+        <option>Class 1A</option>
+        <option>Class 1B</option>
+        <option>Class 2A</option>
+      </select>
+    </div>
+
+    <div class="top-right">
+      <img src="assets/profile.png" alt="Profile" class="profile-avatar">
+      <span class="profile-name">Ms. Rivera</span>
+    </div>
+  </header>
+
+  <div class="container">
+    <aside class="sidebar">
+      <nav>
+        <a href="teacher-dashboard.html" class="nav-item active">
+          <span class="nav-icon">🏠</span>
+          Home
+        </a>
+        <a href="teacher-students.html" class="nav-item">
+          <span class="nav-icon">🧑‍🎓</span>
+          Students
+        </a>
+        <a href="teacher-resources.html" class="nav-item">
+          <span class="nav-icon">📚</span>
+          Resources
+        </a>
+      </nav>
+      <a href="index.html" class="teacher-btn teacher-btn-alt">
+        Student View
+      </a>
+    </aside>
+
+    <main class="content">
+      <div class="page-intro">
+        <h1>Teacher Home</h1>
+        <p>Monitor class safety and quickly identify students who need support. This board is frontend-only for now and ready to be connected to backend events later.</p>
+      </div>
+
+      <article class="card teacher-notification-board">
+        <div class="notification-board-header">
+          <div>
+            <div class="card-title">Notification board</div>
+            <h2>Live class alerts</h2>
+          </div>
+          <span class="alert-count">5 open</span>
+        </div>
+
+        <div class="notification-list">
+          <div class="notification-item warning">
+            <div class="notification-meta">
+              <span class="notification-type">Chatbot safety</span>
+              <span class="notification-time">2 min ago</span>
+            </div>
+            <p>Jordan M. attempted to bypass chatbot rules with repeated prompt-injection style text.</p>
+          </div>
+
+          <div class="notification-item danger">
+            <div class="notification-meta">
+              <span class="notification-type">Needs attention</span>
+              <span class="notification-time">7 min ago</span>
+            </div>
+            <p>Mia R. has asked for help 4 times in 20 minutes and appears stuck on algebra assignment 3.</p>
+          </div>
+
+          <div class="notification-item warning">
+            <div class="notification-meta">
+              <span class="notification-type">Chatbot safety</span>
+              <span class="notification-time">11 min ago</span>
+            </div>
+            <p>Leo K. requested direct final answers repeatedly without showing work attempt.</p>
+          </div>
+
+          <div class="notification-item danger">
+            <div class="notification-meta">
+              <span class="notification-type">Needs attention</span>
+              <span class="notification-time">18 min ago</span>
+            </div>
+            <p>Sofia T. gave very low-energy responses to the AI and described feeling extremely sad; this may indicate a mental health concern and needs immediate teacher follow-up.</p>
+          </div>
+
+          <div class="notification-item info">
+            <div class="notification-meta">
+              <span class="notification-type">System note</span>
+              <span class="notification-time">26 min ago</span>
+            </div>
+            <p>Frontend placeholder event stream is active. Replace static messages with backend events when API is ready.</p>
+          </div>
+        </div>
+      </article>
+    </main>
+  </div>
+
+</body>
+</html>

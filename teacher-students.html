@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Teacher Students</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/teacher.css">
+  <link rel="icon" type="image/png" href="assets/logo.png">
+</head>
+
+<body>
+
+  <header class="top-bar teacher-top-bar">
+    <div class="top-left">
+      <div class="status-dot"></div>
+      <div class="top-chip">
+        <div class="top-icon">T</div>
+        <div class="top-copy">
+          <div class="top-label">Teacher view</div>
+          <div class="top-subtitle">Class roster</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="top-center">
+      <select class="dropdown">
+        <option>Class 1A</option>
+        <option>Class 1B</option>
+        <option>Class 2A</option>
+      </select>
+    </div>
+
+    <div class="top-right">
+      <img src="assets/profile.png" alt="Profile" class="profile-avatar">
+      <span class="profile-name">Ms. Rivera</span>
+    </div>
+  </header>
+
+  <div class="container">
+    <aside class="sidebar">
+      <nav>
+        <a href="teacher-dashboard.html" class="nav-item">
+          <span class="nav-icon">🏠</span>
+          Home
+        </a>
+        <a href="teacher-students.html" class="nav-item active">
+          <span class="nav-icon">🧑‍🎓</span>
+          Students
+        </a>
+        <a href="teacher-resources.html" class="nav-item">
+          <span class="nav-icon">📚</span>
+          Resources
+        </a>
+      </nav>
+      <a href="index.html" class="teacher-btn teacher-btn-alt">
+        Student View
+      </a>
+    </aside>
+
+    <main class="content">
+      <div class="page-intro">
+        <h1>Students</h1>
+        <p>All students in this class are listed below. Status chips and attention flags are static frontend placeholders for backend integration.</p>
+      </div>
+
+      <article class="card">
+        <div class="students-header">
+          <div>
+            <div class="card-title">Students tab</div>
+            <h2>Class 1A roster</h2>
+          </div>
+          <input type="text" class="students-search" placeholder="Search student name" />
+        </div>
+
+        <div class="students-summary">
+          <div class="summary-box">
+            <strong>28</strong>
+            <span>Total students</span>
+          </div>
+          <div class="summary-box">
+            <strong>4</strong>
+            <span>Needs attention</span>
+          </div>
+          <div class="summary-box">
+            <strong>3</strong>
+            <span>Safety alerts</span>
+          </div>
+        </div>
+
+        <div class="students-table-wrap">
+          <table class="students-table">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Progress</th>
+                <th>Chatbot status</th>
+                <th>Attention</th>
+                <th>Last activity</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Alex Borstein</td>
+                <td>92%</td>
+                <td><span class="pill safe">Normal</span></td>
+                <td><span class="pill ok">No</span></td>
+                <td>3 min ago</td>
+              </tr>
+              <tr>
+                <td>Jordan Miller</td>
+                <td>74%</td>
+                <td><span class="pill warn">Suspicious prompt attempts</span></td>
+                <td><span class="pill alert">Yes</span></td>
+                <td>2 min ago</td>
+              </tr>
+              <tr>
+                <td>Mia Rodriguez</td>
+                <td>58%</td>
+                <td><span class="pill safe">Normal</span></td>
+                <td><span class="pill alert">Yes</span></td>
+                <td>7 min ago</td>
+              </tr>
+              <tr>
+                <td>Leo Kim</td>
+                <td>69%</td>
+                <td><span class="pill warn">Repeated direct-answer requests</span></td>
+                <td><span class="pill ok">No</span></td>
+                <td>11 min ago</td>
+              </tr>
+              <tr>
+                <td>Sofia Turner</td>
+                <td>63%</td>
+                <td><span class="pill safe">Normal</span></td>
+                <td><span class="pill alert">Yes</span></td>
+                <td>18 min ago</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </article>
+    </main>
+  </div>
+
+</body>
+</html>
