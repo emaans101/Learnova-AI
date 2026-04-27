@@ -578,9 +578,14 @@
 .graph-chart {
   display: flex;
   align-items: flex-end;
-  gap: 8px;
+  gap: 7px;
   margin-top: 20px;
-  min-height: 180px;
+  min-height: 198px;
+  padding: 18px 14px 30px;
+  background: linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%);
+  border: 1px solid #e2e8f0;
+  border-radius: 18px;
+  overflow-x: auto;
 }
 
 .graph-footer {
@@ -723,26 +728,50 @@
 }
 
 .bar {
-  flex: 1;
+  flex: 1 1 16px;
+  min-width: 16px;
   min-height: 70px;
-  border-radius: 16px 16px 0 0;
-  background: #cbd5e1;
+  border-radius: 10px 10px 0 0;
+  background: linear-gradient(180deg, #cbd5e1, #94a3b8);
   position: relative;
+  box-shadow: 0 5px 12px rgba(148, 163, 184, 0.2);
+}
+
+.bar.week-end {
+  background: linear-gradient(180deg, #d8b4fe, #a78bfa);
+  box-shadow: 0 5px 12px rgba(167, 139, 250, 0.2);
+}
+
+.bar:nth-child(7n) {
+  margin-right: 10px;
+}
+
+.bar:last-child {
+  margin-right: 0;
 }
 
 .bar.highlight,
 .bar.active {
-  background: linear-gradient(180deg, #22c55e, #0f766e);
+  background: linear-gradient(180deg, #34d399, #0f766e);
+  box-shadow: 0 8px 16px rgba(15, 118, 110, 0.28);
 }
 
 .bar span {
   position: absolute;
-  top: 10px;
+  bottom: -22px;
   left: 50%;
   transform: translateX(-50%);
   font-size: 10px;
   font-weight: 800;
-  color: #0f172a;
+  color: #475569;
+  width: max-content;
+  opacity: 0;
+  transition: opacity 0.18s ease;
+}
+
+.bar:hover span,
+.bar.active span {
+  opacity: 1;
 }
 
 .bottom-grid {
