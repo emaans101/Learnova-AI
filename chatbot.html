@@ -2,9 +2,36 @@
 <html>
 <head>
   <title>Student Chatbot</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/chatbot.css">
   <link rel="icon" type="image/png" href="assets/logo.png">
 </head>
+
+<script>
+function sendMessage() {
+    let input = document.getElementById("userInput");
+    let message = input.value;
+
+    if (message === "") return;
+
+    let chat = document.getElementById("chatMessages");
+
+    // User message
+    let userMsg = document.createElement("div");
+    userMsg.className = "user";
+    userMsg.innerText = message;
+    chat.appendChild(userMsg);
+
+    // Bot reply (simple demo)
+    let botMsg = document.createElement("div");
+    botMsg.className = "bot";
+    botMsg.innerText = "You said: " + message;
+    chat.appendChild(botMsg);
+
+    input.value = "";
+    chat.scrollTop = chat.scrollHeight;
+}
+</script>
 
 <body>
 
@@ -64,7 +91,22 @@
         <div class="card-title">AI Help Center</div>
         <p class="card-text">Type in your question and let the chatbot guide you through assignments, classroom topics, and learning tips.</p>
       </article>
+          <div class="chatbox">
+
+      <div class="chat-header">Chatbot</div>
+
+      <div class="chat-messages" id="chatMessages">
+        <div class="bot">Hello! How can I help?</div>
+      </div>
+
+      <div class="chat-input">
+        <input type="text" id="userInput" placeholder="Type a message...">
+        <button onclick="sendMessage()">Send</button>
+      </div>
     </main>
+
+
+  </div>
   </div>
 
 </body>

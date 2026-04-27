@@ -2,7 +2,8 @@
 <html>
 <head>
   <title>Student Resources</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/resources.css">
   <link rel="icon" type="image/png" href="assets/logo.png">
 </head>
 
@@ -55,17 +56,83 @@
         <button class="add-button">+</button>
       </div>
     </aside>
+
     <main class="content">
+
       <div class="page-intro">
         <h1>Resources</h1>
         <p>Browse learning materials, videos, and class notes designed to support every lesson.</p>
       </div>
+
       <article class="card">
         <div class="card-title">Resource Library</div>
         <p class="card-text">Access study guides, practice exercises, and helpful resources for your current courses.</p>
       </article>
+
+      <!-- TOP CARDS -->
+      <div class="resource-top">
+
+        <div class="resource-card">
+          📄 + New Document
+        </div>
+
+        <div class="resource-card">
+          👁️ View All
+        </div>
+
+      </div>
+
+      <!-- UPLOAD BOX -->
+      <div class="upload-box">
+
+        <div class="upload-icon">☁️</div>
+
+        <h2>Choose a file or drag & drop it here</h2>
+        <p>JPEG, PNG, PDF, and MP4 formats, up to 50MB</p>
+
+        <!-- ADDED INPUT (hidden) -->
+        <input type="file" id="fileInput" hidden>
+
+        <button class="browse-btn"
+          onclick="document.getElementById('fileInput').click()">
+          Browse File
+        </button>
+
+        <!-- Progress bar -->
+        <div class="progress">
+          <div class="progress-fill"></div>
+        </div>
+
+        <!-- ADDED FILE LIST -->
+        <div id="fileList" class="file-list"></div>
+
+      </div>
+
     </main>
   </div>
+
+  <!-- ADDED SCRIPT (FUNCTIONALITY) -->
+  <script>
+    const fileInput = document.getElementById("fileInput");
+    const fileList = document.getElementById("fileList");
+
+    fileInput.addEventListener("change", function () {
+        const file = this.files[0];
+        if (!file) return;
+
+        const fileItem = document.createElement("div");
+        fileItem.classList.add("file-item");
+
+        fileItem.innerHTML = `
+            📎 <strong>${file.name}</strong>
+            <span>${(file.size / 1024).toFixed(1)} KB</span>
+        `;
+
+        fileList.appendChild(fileItem);
+
+        fileInput.value = "";
+    });
+  </script>
 
 </body>
 </html>

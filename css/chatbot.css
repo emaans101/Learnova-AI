@@ -1,0 +1,87 @@
+/* CHATBOX */
+.chatbox {
+    margin-top: 20px;
+    background: white;
+    border-radius: 14px;
+    padding: 12px;
+    width: 100%;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.08);
+}
+
+/* HEADER */
+.chat-header {
+    font-weight: bold;
+    font-size: 16px;
+    margin-bottom: 8px;
+    color: #1E1E1E;
+}
+
+/* MESSAGES AREA (your original height kept) */
+.chat-messages {
+    height: 200px;  /* 👈 your original */
+    overflow-y: auto;
+    background: #f9fafb;
+    padding: 10px;
+    border-radius: 10px;
+    scroll-behavior: smooth;
+}
+
+/* MESSAGE BASE */
+.bot, .user {
+    margin: 5px 0;
+    padding: 8px 10px;
+    border-radius: 10px;
+    max-width: 70%;
+    font-size: 14px;
+}
+
+/* BOT */
+.bot {
+    background: #e5e7eb;
+    color: #1E1E1E;
+}
+
+/* USER */
+.user {
+    background: #22C55E;
+    color: white;
+    margin-left: auto;
+}
+
+/* INPUT AREA */
+.chat-input {
+    display: flex;
+    margin-top: 10px;
+    gap: 6px;
+}
+
+/* INPUT */
+.chat-input input {
+    flex: 1;
+    padding: 8px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    outline: none;
+}
+
+/* FOCUS EFFECT */
+.chat-input input:focus {
+    border-color: #22C55E;
+    box-shadow: 0 0 0 2px rgba(34,197,94,0.2);
+}
+
+/* BUTTON */
+.chat-input button {
+    padding: 8px 12px;
+    border: none;
+    background: #22C55E;
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+/* HOVER */
+.chat-input button:hover {
+    background: #16a34a;
+}
