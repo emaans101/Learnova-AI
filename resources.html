@@ -9,130 +9,245 @@
 
 <body>
 
-  <header class="top-bar">
-    <div class="top-left">
-      <div class="status-dot"></div>
-      <div class="top-icon">📄</div>
-      <div class="top-label">Student view</div>
-    </div>
-    <div class="top-center">
-      <select class="dropdown">
-        <option>Class 1</option>
-        <option>Class 2</option>
-        <option>Class 3</option>
-      </select>
-    </div>
-    <div class="top-right">
-      <img src="assets/profile.png" alt="Profile" class="profile-avatar">
-      <span class="profile-name">Alex Borstein</span>
-    </div>
-  </header>
-
-  <div class="container">
-    <aside class="sidebar">
-      <nav>
-        <a href="index.html" class="nav-item">
-          <span class="nav-icon home-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M3 11L12 3l9 8v8a1 1 0 0 1-1 1h-5v-5H9v5H4a1 1 0 0 1-1-1v-8Z" />
-            </svg>
-          </span>
-          Home
-        </a>
-        <a href="chatbot.html" class="nav-item">
-          <span class="nav-icon">💬</span>
-          Chatbot
-        </a>
-        <a href="resources.html" class="nav-item active">
-          <span class="nav-icon">📚</span>
-          Resources
-        </a>
-        <a href="settings.html" class="nav-item">
-          <span class="nav-icon">⚙️</span>
-          Settings
-        </a>
-      </nav>
-      <div class="sidebar-footer">
-        <button class="add-button">+</button>
-      </div>
-    </aside>
-
-    <main class="content">
-
-      <div class="page-intro">
-        <h1>Resources</h1>
-        <p>Browse learning materials, videos, and class notes designed to support every lesson.</p>
-      </div>
-
-      <article class="card">
-        <div class="card-title">Resource Library</div>
-        <p class="card-text">Access study guides, practice exercises, and helpful resources for your current courses.</p>
-      </article>
-
-      <!-- TOP CARDS -->
-      <div class="resource-top">
-
-        <div class="resource-card">
-          📄 + New Document
-        </div>
-
-        <div class="resource-card">
-          👁️ View All
-        </div>
-
-      </div>
-
-      <!-- UPLOAD BOX -->
-      <div class="upload-box">
-
-        <div class="upload-icon">☁️</div>
-
-        <h2>Choose a file or drag & drop it here</h2>
-        <p>JPEG, PNG, PDF, and MP4 formats, up to 50MB</p>
-
-        <!-- ADDED INPUT (hidden) -->
-        <input type="file" id="fileInput" hidden>
-
-        <button class="browse-btn"
-          onclick="document.getElementById('fileInput').click()">
-          Browse File
-        </button>
-
-        <!-- Progress bar -->
-        <div class="progress">
-          <div class="progress-fill"></div>
-        </div>
-
-        <!-- ADDED FILE LIST -->
-        <div id="fileList" class="file-list"></div>
-
-      </div>
-
-    </main>
+<header class="top-bar">
+  <div class="top-left">
+    <div class="status-dot"></div>
+    <div class="top-icon">📄</div>
+    <div class="top-label">Student view</div>
   </div>
 
-  <!-- ADDED SCRIPT (FUNCTIONALITY) -->
-  <script>
-    const fileInput = document.getElementById("fileInput");
-    const fileList = document.getElementById("fileList");
+  <div class="top-center">
+    <select class="dropdown">
+      <option>Class 1</option>
+      <option>Class 2</option>
+      <option>Class 3</option>
+    </select>
+  </div>
 
-    fileInput.addEventListener("change", function () {
-        const file = this.files[0];
-        if (!file) return;
+  <div class="top-right">
+    <img src="assets/profile.png" alt="Profile" class="profile-avatar">
+    <span class="profile-name">Alex Borstein</span>
+  </div>
+</header>
 
-        const fileItem = document.createElement("div");
-        fileItem.classList.add("file-item");
+<div class="container">
 
-        fileItem.innerHTML = `
-            📎 <strong>${file.name}</strong>
-            <span>${(file.size / 1024).toFixed(1)} KB</span>
-        `;
+  <aside class="sidebar">
+    <nav>
+      <a href="index.html" class="nav-item">
+        <span class="nav-icon">🏠</span> Home
+      </a>
+      <a href="chatbot.html" class="nav-item">
+        <span class="nav-icon">💬</span> Chatbot
+      </a>
+      <a href="resources.html" class="nav-item active">
+        <span class="nav-icon">📚</span> Resources
+      </a>
+      <a href="settings.html" class="nav-item">
+        <span class="nav-icon">⚙️</span> Settings
+      </a>
+    </nav>
 
-        fileList.appendChild(fileItem);
+    <div class="sidebar-footer">
+      <button class="add-button" id="sidebarAddBtn">+</button>
+    </div>
+  </aside>
 
-        fileInput.value = "";
+  <main class="content">
+
+    <div class="page-intro">
+      <h1>Resources</h1>
+      <p>Browse learning materials, videos, and class notes designed to support every lesson.</p>
+    </div>
+
+    <article class="card">
+      <div class="card-title">Resource Library</div>
+      <p class="card-text">Access study guides, practice exercises, and helpful resources for your current courses.</p>
+    </article>
+
+    <div class="action-row">
+      <div class="action-card" id="newDocBtn">
+        📄 New Document
+      </div>
+      <div class="action-card" id="viewAllBtn">
+        👁️ View All Files
+      </div>
+    </div>
+
+    <div class="tabs">
+      <div class="tab active" data-tab="upload">Upload</div>
+      <div class="tab" data-tab="files">Files <span id="fileCountBadge">0</span></div>
+      <div class="tab" data-tab="library">Library</div>
+    </div>
+
+    <!-- UPLOAD TAB -->
+    <div class="panel active" id="panel-upload">
+
+      <div class="upload-zone" id="dropZone">
+        <div class="upload-icon">☁️</div>
+        <h2>Choose a file or drag & drop it here</h2>
+        <p>JPEG, PNG, PDF, MP4 formats — up to 50 MB</p>
+
+        <input type="file" id="fileInput" hidden multiple
+          accept=".jpeg,.jpg,.png,.pdf,.mp4,.doc,.docx,.txt">
+
+        <button class="browse-btn" id="browseBtn">Browse File</button>
+
+        <div class="prog-wrap" id="progWrap" style="display:none;">
+          <div class="prog-bar">
+            <div class="prog-fill" id="progFill"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="stats-row">
+        <div class="stat-card"><div class="stat-label">Total files</div><div class="stat-val" id="statTotal">0</div></div>
+        <div class="stat-card"><div class="stat-label">Total size</div><div class="stat-val" id="statSize">0 KB</div></div>
+        <div class="stat-card"><div class="stat-label">File types</div><div class="stat-val" id="statTypes">—</div></div>
+      </div>
+
+      <div id="recentList"></div>
+    </div>
+
+    <!-- FILES TAB -->
+    <div class="panel" id="panel-files">
+
+      <div class="search-bar">
+        <input type="text" id="searchInput" placeholder="Search files..." />
+
+        <div class="view-toggle">
+          <button class="vt-btn active" id="gridBtn">⊞</button>
+          <button class="vt-btn" id="listBtn">☰</button>
+        </div>
+      </div>
+
+      <div class="filters">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="pdf">PDF</button>
+        <button class="filter-btn" data-filter="img">Image</button>
+        <button class="filter-btn" data-filter="vid">Video</button>
+        <button class="filter-btn" data-filter="doc">Document</button>
+      </div>
+
+      <div class="file-grid" id="fileGrid"></div>
+      <div class="file-list-view" id="fileListView"></div>
+
+      <div class="empty-state" id="emptyState">
+        📂 No files uploaded yet. Go to Upload tab to add files.
+      </div>
+
+    </div>
+
+    <!-- LIBRARY TAB -->
+    <div class="panel" id="panel-library">
+      <p class="library-note">Class resources provided by your teacher.</p>
+
+      <div class="file-grid">
+        <div class="file-card">📘 Chapter 1 Notes</div>
+        <div class="file-card">🎬 Intro Lecture</div>
+        <div class="file-card">📝 Practice Quiz</div>
+        <div class="file-card">🖼️ Diagram Sheet</div>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+let files = [];
+let currentFilter = 'all';
+let isGridView = true;
+
+const fileInput = document.getElementById('fileInput');
+const dropZone = document.getElementById('dropZone');
+const progWrap = document.getElementById('progWrap');
+const progFill = document.getElementById('progFill');
+const fileGrid = document.getElementById('fileGrid');
+const fileListView = document.getElementById('fileListView');
+const emptyState = document.getElementById('emptyState');
+const searchInput = document.getElementById('searchInput');
+
+function switchTab(name){
+  document.querySelectorAll('.tab').forEach(t=>t.classList.toggle('active',t.dataset.tab===name));
+  document.querySelectorAll('.panel').forEach(p=>p.classList.toggle('active',p.id==='panel-'+name));
+}
+
+document.querySelectorAll('.tab').forEach(t=>t.onclick=()=>switchTab(t.dataset.tab));
+
+// FIXED BUTTONS
+const sidebarAddBtn = document.getElementById('sidebarAddBtn');
+const newDocBtn = document.getElementById('newDocBtn');
+const viewAllBtn = document.getElementById('viewAllBtn');
+
+sidebarAddBtn.onclick = ()=>{switchTab('upload');fileInput.click();};
+newDocBtn.onclick = ()=>{switchTab('upload');fileInput.click();};
+viewAllBtn.onclick = ()=>switchTab('files');
+
+browseBtn.onclick = ()=>fileInput.click();
+
+function handleFiles(newFiles){
+  if(!newFiles.length)return;
+
+  progWrap.style.display='block';
+  let p=0;
+  const i=setInterval(()=>{
+    p+=20;
+    progFill.style.width=p+'%';
+    if(p>=100){clearInterval(i);setTimeout(()=>progWrap.style.display='none',500);}
+  },120);
+
+  newFiles.forEach(f=>{
+    files.unshift({
+      id:Date.now()+Math.random(),
+      name:f.name,
+      size:f.size,
+      type:getType(f.name),
+      date:new Date()
     });
-  </script>
+  });
+
+  update();
+}
+
+function getType(n){
+  const e=n.split('.').pop();
+  if(['jpg','png','jpeg'].includes(e))return'img';
+  if(e==='pdf')return'pdf';
+  if(['mp4'].includes(e))return'vid';
+  return'doc';
+}
+
+function render(){
+  const q=searchInput.value?.toLowerCase()||'';
+  const f=files.filter(x=>(currentFilter==='all'||x.type===currentFilter)&&x.name.toLowerCase().includes(q));
+
+  emptyState.style.display=f.length?'none':'block';
+
+  fileGrid.innerHTML=f.map(x=>`
+    <div class="file-card">
+      📄 ${x.name}
+    </div>`).join('');
+
+  fileListView.innerHTML=f.map(x=>`
+    <div class="list-item">${x.name}</div>`).join('');
+}
+
+function update(){
+  document.getElementById('statTotal').textContent=files.length;
+  document.getElementById('fileCountBadge').textContent=files.length;
+  render();
+}
+
+fileInput.onchange=e=>handleFiles([...e.target.files]);
+dropZone.ondrop=e=>{e.preventDefault();handleFiles([...e.dataTransfer.files]);};
+dropZone.ondragover=e=>e.preventDefault();
+
+searchInput.oninput=render;
+
+update();
+</script>
 
 </body>
 </html>
