@@ -210,38 +210,109 @@
 }
 
 .most-asked-card .bar-list {
-  display: grid;
-  gap: 14px;
+  display: flex;
+  align-items: flex-end;
+  gap: 10px;
+  margin-top: 18px;
+  min-height: 236px;
+}
+
+.bar-group {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
 }
 
 .bar-item {
+  width: 100%;
+  border-radius: 999px;
+  box-shadow: 0 12px 24px rgba(15, 23, 42, 0.08);
+}
+
+.bar-meta {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: space-between;
-  padding: 16px;
-  border-radius: 18px;
-  color: white;
+  gap: 4px;
+  text-align: center;
+}
+
+.bar-meta strong {
+  font-size: 12px;
+  color: #0f172a;
+}
+
+.bar-meta span {
+  font-size: 10px;
   font-weight: 700;
+  color: #64748b;
 }
 
 .bar-item.gold {
-  background: linear-gradient(135deg, #eab308, #facc15);
+  height: 156px;
+  background: linear-gradient(180deg, #efcf61, #e9c85a);
 }
 
 .bar-item.blue {
-  background: linear-gradient(135deg, #3b82f6, #0ea5e9);
+  height: 180px;
+  background: linear-gradient(180deg, #5e85df, #557cda);
 }
 
-.bar-item.red {
-  background: linear-gradient(135deg, #ec4899, #f43f5e);
+.bar-item.pink {
+  height: 196px;
+  background: linear-gradient(180deg, #f62f7a, #f52b78);
 }
 
 .bar-item.purple {
-  background: linear-gradient(135deg, #a855f7, #d946ef);
+  height: 168px;
+  background: linear-gradient(180deg, #b668f2, #a855f7);
 }
 
 .bar-item.teal {
-  background: linear-gradient(135deg, #14b8a6, #06b6d4);
+  height: 144px;
+  background: linear-gradient(180deg, #33c7bd, #16b5a9);
+}
+
+@media (max-width: 720px) {
+  .most-asked-card .bar-list {
+    gap: 8px;
+    min-height: 188px;
+  }
+
+  .bar-group {
+    gap: 8px;
+  }
+
+  .bar-meta strong {
+    font-size: 11px;
+  }
+
+  .bar-meta span {
+    font-size: 9px;
+  }
+
+  .bar-item.gold {
+    height: 124px;
+  }
+
+  .bar-item.blue {
+    height: 142px;
+  }
+
+  .bar-item.pink {
+    height: 154px;
+  }
+
+  .bar-item.purple {
+    height: 132px;
+  }
+
+  .bar-item.teal {
+    height: 116px;
+  }
 }
 
 .leaderboard-card {
