@@ -233,13 +233,13 @@ nav {
 
 
 .content {
-  padding: 20px 20px 28px;
+  padding: 16px 16px 20px;
   height: 100%;
   overflow-y: auto;
 }
 
 .page-intro {
-  margin-bottom: 18px;
+  margin-bottom: 14px;
 }
 
 .page-intro h1 {
@@ -256,15 +256,15 @@ nav {
 }
 
 .card-text {
-  margin: 12px 0 0;
+  margin: 10px 0 0;
   color: #475569;
   line-height: 1.6;
 }
 
 .dashboard-grid {
   display: grid;
-  gap: 22px;
-  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr) minmax(260px, 0.9fr);
+  gap: 18px;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr) minmax(0, 1fr);
   grid-template-areas:
     "progress rings topics"
     "graph graph assignment"
@@ -291,13 +291,13 @@ nav {
 .card {
   background: white;
   border-radius: 16px;
-  padding: 16px;
+  padding: 14px;
   box-shadow: 0 12px 28px rgba(15, 23, 42, 0.08);
 }
 
 .card-title {
   display: block;
-  margin-bottom: 14px;
+  margin-bottom: 10px;
   font-size: 13px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
