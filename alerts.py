@@ -28,8 +28,10 @@ def create_alert_endpoint():
         student_name = data.get("student_name", "Unknown")
         alert_type = data.get("alert_type", "Other")
         message = data.get("message", "")
+        source_message = data.get("source_message")
+        analysis_model = data.get("analysis_model")
         
-        alert_id = create_alert(student_name, alert_type, message)
+        alert_id = create_alert(student_name, alert_type, message, source_message, analysis_model)
         
         return jsonify({'id': alert_id, 'status': 'created'}), 201
     except Exception as e:

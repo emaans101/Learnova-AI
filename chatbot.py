@@ -3,8 +3,9 @@ from flask_cors import CORS
 from openai import OpenAI
 import os
 from dotenv import load_dotenv
-from database import init_db
+from database import init_db, create_alert
 from alerts import alerts_bp
+from message_flagger import analyze_message
 
 # Load .env file
 load_dotenv()
@@ -44,6 +45,17 @@ def chat():
         data = request.json
         user_message = data.get("message", "")
         history = data.get("history", [])
+        student_name = data.get("student_name", "Student")
+
+        flag_result = analyze_message(user_message, history)
+        if flag_result.get("should_flag"):
+            create_alert(
+                student_name=student_name,
+                alert_type=flag_result.get("alert_type", "Other"),
+                message=flag_result.get("note", "Flagged by the message scanner."),
+                source_message=user_message,
+                analysis_model=flag_result.get("analysis_model"),
+            )
 
         messages = [{"role": "system", "content": SYSTEM_PROMPT}]
         messages.extend(history)
