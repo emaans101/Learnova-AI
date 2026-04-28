@@ -186,12 +186,20 @@ document.querySelectorAll('.tab').forEach(t=>t.onclick=()=>switchTab(t.dataset.t
 const sidebarAddBtn = document.getElementById('sidebarAddBtn');
 const newDocBtn = document.getElementById('newDocBtn');
 const viewAllBtn = document.getElementById('viewAllBtn');
+const browseBtn = document.getElementById('browseBtn');
 
-sidebarAddBtn.onclick = ()=>{switchTab('upload');fileInput.click();};
-newDocBtn.onclick = ()=>{switchTab('upload');fileInput.click();};
-viewAllBtn.onclick = ()=>switchTab('files');
-
-browseBtn.onclick = ()=>fileInput.click();
+if (sidebarAddBtn) {
+  sidebarAddBtn.onclick = ()=>{switchTab('upload');fileInput.click();};
+}
+if (newDocBtn) {
+  newDocBtn.onclick = ()=>{switchTab('upload');fileInput.click();};
+}
+if (viewAllBtn) {
+  viewAllBtn.onclick = ()=>switchTab('files');
+}
+if (browseBtn) {
+  browseBtn.onclick = ()=>fileInput.click();
+}
 
 function handleFiles(newFiles){
   if(!newFiles.length)return;
