@@ -237,6 +237,295 @@
   font-size: 13px;
 }
 
+.teacher-resources-page .content {
+  padding: 30px;
+}
+
+.teacher-resources-page .action-row {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.teacher-resources-page .action-card {
+  flex: 1;
+  border: 0;
+  border-radius: 12px;
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 700;
+  text-align: left;
+  background: #0f766e;
+  color: #ffffff;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.teacher-resources-page .action-card:hover {
+  background: #0b5c56;
+  transform: translateY(-2px);
+}
+
+.teacher-resources-page .tabs {
+  display: flex;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #d1d5db;
+}
+
+.teacher-resources-page .tab {
+  padding: 9px 18px;
+  font-size: 14px;
+  cursor: pointer;
+  color: #64748b;
+  border-bottom: 2px solid transparent;
+  transition: 0.15s ease;
+}
+
+.teacher-resources-page .tab.active {
+  color: #0f172a;
+  border-bottom-color: #facc15;
+  font-weight: 700;
+}
+
+.teacher-resources-page .tab:hover:not(.active) {
+  color: #0f172a;
+}
+
+.teacher-resources-page .panel {
+  display: none;
+}
+
+.teacher-resources-page .panel.active {
+  display: block;
+}
+
+.teacher-resources-page .upload-zone {
+  border: 1.5px dashed rgba(15, 118, 110, 0.3);
+  border-radius: 14px;
+  padding: 40px 30px;
+  text-align: center;
+  background: #ffffff;
+  transition: 0.2s ease;
+  margin-bottom: 24px;
+  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.06);
+}
+
+.teacher-resources-page .teacher-upload-zone:hover {
+  border-color: #0f766e;
+}
+
+.teacher-resources-page .upload-icon {
+  font-size: 36px;
+  margin-bottom: 12px;
+}
+
+.teacher-resources-page .upload-zone h2 {
+  font-size: 16px;
+  font-weight: 700;
+  margin: 0 0 6px;
+}
+
+.teacher-resources-page .upload-zone p {
+  font-size: 13px;
+  color: #64748b;
+  margin: 0 0 16px;
+}
+
+.teacher-resources-page .browse-btn {
+  padding: 10px 18px;
+  background: #0f766e;
+  color: #ffffff;
+  border: none;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.teacher-resources-page .browse-btn:hover {
+  background: #0b5c56;
+}
+
+.teacher-resources-page .stats-row {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.teacher-resources-page .stat-card {
+  background: #f8fafc;
+  border-radius: 12px;
+  padding: 12px 16px;
+  border: 1px solid #e2e8f0;
+}
+
+.teacher-resources-page .stat-label {
+  font-size: 12px;
+  color: #64748b;
+  margin-bottom: 4px;
+}
+
+.teacher-resources-page .stat-val {
+  font-size: 20px;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.teacher-resources-page .search-bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.teacher-resources-page .search-bar input {
+  flex: 1;
+  padding: 10px 12px;
+  border: 1px solid #cbd5e1;
+  border-radius: 10px;
+  font-size: 14px;
+}
+
+.teacher-resources-page .view-toggle {
+  display: flex;
+  gap: 8px;
+}
+
+.teacher-resources-page .vt-btn {
+  width: 42px;
+  height: 42px;
+  border-radius: 10px;
+  border: 1px solid #cbd5e1;
+  background: #ffffff;
+  color: #334155;
+  cursor: pointer;
+}
+
+.teacher-resources-page .vt-btn.active {
+  background: #fef3c7;
+  border-color: #facc15;
+  color: #92400e;
+}
+
+.teacher-resources-page .filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+.teacher-resources-page .filter-btn {
+  padding: 8px 14px;
+  border: 1px solid #cbd5e1;
+  border-radius: 999px;
+  background: #ffffff;
+  font-size: 13px;
+  cursor: pointer;
+  color: #475569;
+  transition: 0.15s ease;
+}
+
+.teacher-resources-page .filter-btn.active {
+  background: #fef3c7;
+  color: #92400e;
+  border-color: #facc15;
+  font-weight: 700;
+}
+
+.teacher-resources-page .file-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 12px;
+}
+
+.teacher-resources-page .file-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 14px;
+  cursor: pointer;
+  transition: 0.15s ease;
+  position: relative;
+  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.05);
+}
+
+.teacher-resources-page .file-card:hover {
+  background: #f8fafc;
+  border-color: #cbd5e1;
+}
+
+.teacher-resources-page .fc-icon {
+  font-size: 28px;
+  margin-bottom: 8px;
+}
+
+.teacher-resources-page .fc-name {
+  font-size: 13px;
+  font-weight: 700;
+  margin-bottom: 4px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.teacher-resources-page .fc-meta {
+  font-size: 11px;
+  color: #64748b;
+}
+
+.teacher-resources-page .fc-tag {
+  display: inline-block;
+  font-size: 10px;
+  padding: 2px 6px;
+  border-radius: 999px;
+  margin-top: 8px;
+  font-weight: 700;
+}
+
+.teacher-resources-page .tag-pdf {
+  background: #e0f2fe;
+  color: #075985;
+}
+
+.teacher-resources-page .tag-img {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.teacher-resources-page .tag-vid {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.teacher-resources-page .tag-doc {
+  background: #ede9fe;
+  color: #5b21b6;
+}
+
+.teacher-resources-page .library-note,
+.teacher-resources-page .empty-state {
+  color: #64748b;
+  line-height: 1.6;
+}
+
+.teacher-resources-page .library-note {
+  margin: 0 0 16px;
+}
+
+.teacher-resources-page .empty-state {
+  margin-top: 18px;
+  text-align: center;
+  padding: 24px 20px;
+  background: #f8fafc;
+  border-radius: 12px;
+  border: 1px dashed #cbd5e1;
+}
+
 @media (max-width: 1000px) {
   .students-summary,
   .teacher-resource-grid {
@@ -254,5 +543,16 @@
   .notification-board-header {
     flex-direction: column;
     align-items: flex-start;
+  }
+
+  .teacher-resources-page .action-row,
+  .teacher-resources-page .search-bar,
+  .teacher-resources-page .stats-row {
+    grid-template-columns: 1fr;
+    flex-direction: column;
+  }
+
+  .teacher-resources-page .action-card {
+    width: 100%;
   }
 }

@@ -8,7 +8,7 @@
   <link rel="icon" type="image/png" href="assets/logo.png">
 </head>
 
-<body>
+<body class="teacher-resources-page">
 
   <header class="top-bar teacher-top-bar">
     <div class="top-left">
@@ -60,30 +60,132 @@
     <main class="content">
       <div class="page-intro">
         <h1>Resources</h1>
-        <p>Publish and track class resources. This page is frontend-only and designed to be connected to upload and analytics APIs later.</p>
+        <p>Publish worksheets, share lesson media, and keep class materials organized from one teacher workspace.</p>
       </div>
 
-      <div class="teacher-resource-grid">
-        <article class="card">
-          <div class="card-title">Actions</div>
-          <div class="teacher-actions">
-            <button class="action-button" type="button">Upload worksheet</button>
-            <button class="action-button" type="button">Share video lesson</button>
-            <button class="action-button" type="button">Post class announcement</button>
-          </div>
-        </article>
+      <article class="card">
+        <div class="card-title">Class Resource Studio</div>
+        <p class="card-text">Prepare materials before they are shared with students. The layout mirrors the student resource view so both pages feel like one product.</p>
+      </article>
 
-        <article class="card">
-          <div class="card-title">Latest uploads</div>
-          <ul class="resource-list">
-            <li><strong>Algebra Practice Set A</strong><span>Uploaded 12 min ago</span></li>
-            <li><strong>Reading Comprehension Week 4</strong><span>Uploaded 1 hour ago</span></li>
-            <li><strong>Science Lab Safety Slides</strong><span>Uploaded yesterday</span></li>
-          </ul>
-        </article>
+      <div class="action-row">
+        <button class="action-card" type="button">Upload worksheet</button>
+        <button class="action-card" type="button">Share video lesson</button>
+        <button class="action-card" type="button">Post class announcement</button>
+      </div>
+
+      <div class="tabs">
+        <div class="tab active" data-tab="publish">Publish</div>
+        <div class="tab" data-tab="uploads">Uploads</div>
+        <div class="tab" data-tab="library">Library</div>
+      </div>
+
+      <div class="panel active" id="panel-publish">
+        <div class="upload-zone teacher-upload-zone">
+          <div class="upload-icon">☁️</div>
+          <h2>Choose a file or drag and drop it here</h2>
+          <p>PDF, DOCX, PNG, MP4 formats for class delivery and review</p>
+
+          <button class="browse-btn teacher-browse-btn" type="button">Browse Files</button>
+        </div>
+
+        <div class="stats-row">
+          <div class="stat-card"><div class="stat-label">Published today</div><div class="stat-val">4</div></div>
+          <div class="stat-card"><div class="stat-label">Scheduled</div><div class="stat-val">2</div></div>
+          <div class="stat-card"><div class="stat-label">Drafts</div><div class="stat-val">6</div></div>
+        </div>
+      </div>
+
+      <div class="panel" id="panel-uploads">
+        <div class="search-bar">
+          <input type="text" placeholder="Search uploaded resources..." />
+
+          <div class="view-toggle">
+            <button class="vt-btn active" type="button">⊞</button>
+            <button class="vt-btn" type="button">☰</button>
+          </div>
+        </div>
+
+        <div class="filters">
+          <button class="filter-btn active" type="button">All</button>
+          <button class="filter-btn" type="button">PDF</button>
+          <button class="filter-btn" type="button">Image</button>
+          <button class="filter-btn" type="button">Video</button>
+          <button class="filter-btn" type="button">Document</button>
+        </div>
+
+        <div class="file-grid">
+          <div class="file-card">
+            <div class="fc-icon">📄</div>
+            <div class="fc-name">Algebra Practice Set A</div>
+            <div class="fc-meta">Uploaded 12 min ago</div>
+            <span class="fc-tag tag-doc">Document</span>
+          </div>
+          <div class="file-card">
+            <div class="fc-icon">🎬</div>
+            <div class="fc-name">Reading Comprehension Week 4</div>
+            <div class="fc-meta">Uploaded 1 hour ago</div>
+            <span class="fc-tag tag-vid">Video</span>
+          </div>
+          <div class="file-card">
+            <div class="fc-icon">🖼️</div>
+            <div class="fc-name">Science Lab Safety Slides</div>
+            <div class="fc-meta">Uploaded yesterday</div>
+            <span class="fc-tag tag-img">Image</span>
+          </div>
+        </div>
+
+        <div class="empty-state">Use the Publish tab to add new resources for your class.</div>
+      </div>
+
+      <div class="panel" id="panel-library">
+        <p class="library-note">Shared class materials ready for students to view.</p>
+
+        <div class="file-grid">
+          <div class="file-card">
+            <div class="fc-icon">📘</div>
+            <div class="fc-name">Chapter 1 Notes</div>
+            <div class="fc-meta">Core reading packet</div>
+            <span class="fc-tag tag-doc">Document</span>
+          </div>
+          <div class="file-card">
+            <div class="fc-icon">📝</div>
+            <div class="fc-name">Practice Quiz</div>
+            <div class="fc-meta">Auto-graded worksheet</div>
+            <span class="fc-tag tag-pdf">PDF</span>
+          </div>
+          <div class="file-card">
+            <div class="fc-icon">🎥</div>
+            <div class="fc-name">Intro Lecture</div>
+            <div class="fc-meta">Recorded lesson video</div>
+            <span class="fc-tag tag-vid">Video</span>
+          </div>
+          <div class="file-card">
+            <div class="fc-icon">🗂️</div>
+            <div class="fc-name">Diagram Sheet</div>
+            <div class="fc-meta">Reference handout</div>
+            <span class="fc-tag tag-img">Image</span>
+          </div>
+        </div>
       </div>
     </main>
   </div>
+
+  <script>
+    function switchTab(name) {
+      document.querySelectorAll('.tab').forEach((tab) => {
+        tab.classList.toggle('active', tab.dataset.tab === name);
+      });
+
+      document.querySelectorAll('.panel').forEach((panel) => {
+        panel.classList.toggle('active', panel.id === `panel-${name}`);
+      });
+    }
+
+    document.querySelectorAll('.tab').forEach((tab) => {
+      tab.addEventListener('click', () => switchTab(tab.dataset.tab));
+    });
+  </script>
 
 </body>
 </html>

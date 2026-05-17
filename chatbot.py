@@ -7,10 +7,12 @@ from database import init_db, create_alert
 from alerts import alerts_bp
 from message_flagger import analyze_message
 
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
 # Load .env file
 load_dotenv()
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder=BASE_DIR, static_url_path="")
 CORS(app)
 
 # Initialize database
@@ -199,7 +201,12 @@ def chat():
 
 @app.route("/")
 def home():
-    return "Chatbot backend is running 🚀"
+    return app.send_static_file("chatbot.html")
+
+
+@app.route("/chatbot")
+def chatbot_page():
+    return app.send_static_file("chatbot.html")
 
 
 if __name__ == "__main__":
