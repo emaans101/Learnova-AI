@@ -34,7 +34,6 @@
     </div>
   </header>
 
-  <!-- ── LEARNING DNA ONBOARDING OVERLAY ───────────────────────────────── -->
   <div class="dna-overlay" id="dnaOverlay">
     <div class="dna-modal">
       <div class="dna-modal-header">
@@ -89,7 +88,6 @@
         </a>
       </nav>
 
-      <!-- Learning DNA sidebar panel -->
       <div class="learning-dna-panel">
         <div class="dna-label">Learning DNA</div>
         <div class="dna-style" id="dnaStyle">Detecting...</div>
@@ -130,11 +128,7 @@
           Chatbot
           <span class="chat-dna-badge" id="chatDnaBadge"></span>
         </div>
-
-        <div class="chat-messages" id="chatMessages">
-          <!-- welcome message injected by JS after style is set -->
-        </div>
-
+        <div class="chat-messages" id="chatMessages"></div>
         <div class="chat-input">
           <input type="text" id="userInput" placeholder="Type a message..." autocomplete="off">
           <button id="sendBtn" onclick="sendMessage()">Send</button>
@@ -144,123 +138,72 @@
   </div>
 
 <style>
-/* ── DNA Overlay ─────────────────────────────────────────────────────────── */
 .dna-overlay {
-  position: fixed;
-  inset: 0;
+  position: fixed; inset: 0;
   background: rgba(0,0,0,0.45);
   z-index: 1000;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: flex; align-items: center; justify-content: center;
 }
 .dna-overlay.hidden { display: none; }
-
 .dna-modal {
-  background: #fff;
-  border-radius: 16px;
-  padding: 32px 28px 24px;
-  width: min(480px, 92vw);
+  background: #fff; border-radius: 16px;
+  padding: 32px 28px 24px; width: min(480px, 92vw);
   box-shadow: 0 8px 40px rgba(0,0,0,0.18);
 }
 .dna-modal-header { text-align: center; margin-bottom: 24px; }
 .dna-modal-icon { font-size: 36px; margin-bottom: 8px; }
 .dna-modal-header h2 { font-size: 20px; font-weight: 600; margin: 0 0 6px; color: #1a1a1a; }
 .dna-modal-header p  { font-size: 13px; color: #6b7280; margin: 0; }
-
 .dna-options {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 10px;
-  margin-bottom: 16px;
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 10px; margin-bottom: 16px;
 }
 .dna-option {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 4px;
-  padding: 14px 10px;
-  border: 1.5px solid #e5e7eb;
-  border-radius: 12px;
-  background: #fafafa;
-  cursor: pointer;
-  transition: border-color 0.15s, background 0.15s;
-  text-align: center;
+  display: flex; flex-direction: column; align-items: center;
+  gap: 4px; padding: 14px 10px;
+  border: 1.5px solid #e5e7eb; border-radius: 12px;
+  background: #fafafa; cursor: pointer;
+  transition: border-color 0.15s, background 0.15s; text-align: center;
 }
-.dna-option:hover, .dna-option.selected {
-  border-color: #7c3aed;
-  background: #f5f3ff;
-}
-.dna-opt-emoji  { font-size: 24px; }
-.dna-opt-label  { font-size: 13px; font-weight: 600; color: #1a1a1a; }
-.dna-opt-desc   { font-size: 11px; color: #6b7280; line-height: 1.4; }
-
+.dna-option:hover, .dna-option.selected { border-color: #7c3aed; background: #f5f3ff; }
+.dna-opt-emoji { font-size: 24px; }
+.dna-opt-label { font-size: 13px; font-weight: 600; color: #1a1a1a; }
+.dna-opt-desc  { font-size: 11px; color: #6b7280; line-height: 1.4; }
 .dna-skip {
-  display: block;
-  width: 100%;
-  background: none;
-  border: none;
-  font-size: 12px;
-  color: #9ca3af;
-  cursor: pointer;
-  text-align: center;
-  padding: 4px;
+  display: block; width: 100%; background: none; border: none;
+  font-size: 12px; color: #9ca3af; cursor: pointer; text-align: center; padding: 4px;
 }
 .dna-skip:hover { color: #6b7280; text-decoration: underline; }
-
-/* ── Sidebar DNA panel ───────────────────────────────────────────────────── */
 .learning-dna-panel {
-  margin: 12px 0;
-  padding: 12px;
-  background: #f5f3ff;
-  border-radius: 10px;
-  border: 1px solid #ddd6fe;
+  margin: 12px 0; padding: 12px;
+  background: #f5f3ff; border-radius: 10px; border: 1px solid #ddd6fe;
 }
 .dna-label {
-  font-size: 10px;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: #7c3aed;
-  margin-bottom: 4px;
+  font-size: 10px; font-weight: 600; letter-spacing: 0.08em;
+  text-transform: uppercase; color: #7c3aed; margin-bottom: 4px;
 }
-.dna-style { font-size: 14px; font-weight: 600; color: #4c1d95; }
+.dna-style  { font-size: 14px; font-weight: 600; color: #4c1d95; }
 .dna-source { font-size: 10px; color: #a78bfa; margin-top: 1px; margin-bottom: 4px; }
 .dna-signals { font-size: 11px; color: #9ca3af; margin-bottom: 8px; }
-
 .dna-style-picker { margin-top: 6px; }
 .dna-picker-label { font-size: 10px; color: #9ca3af; display: block; margin-bottom: 4px; }
 .dna-picker-btns  { display: flex; gap: 4px; }
 .dna-pick-btn {
-  flex: 1;
-  font-size: 14px;
-  padding: 4px 0;
-  border: 1px solid #ddd6fe;
-  border-radius: 6px;
-  background: #fff;
-  cursor: pointer;
+  flex: 1; font-size: 14px; padding: 4px 0;
+  border: 1px solid #ddd6fe; border-radius: 6px;
+  background: #fff; cursor: pointer;
   transition: background 0.12s, border-color 0.12s;
 }
-.dna-pick-btn:hover   { background: #ede9fe; border-color: #a78bfa; }
-.dna-pick-btn.active  { background: #7c3aed; border-color: #7c3aed; }
-
-/* ── Chat header badge ───────────────────────────────────────────────────── */
+.dna-pick-btn:hover  { background: #ede9fe; border-color: #a78bfa; }
+.dna-pick-btn.active { background: #7c3aed; border-color: #7c3aed; }
 .chat-dna-badge {
-  font-size: 11px;
-  background: #ede9fe;
-  color: #5b21b6;
-  padding: 2px 8px;
-  border-radius: 99px;
-  margin-left: 8px;
-  font-weight: 500;
-  transition: opacity 0.3s;
+  font-size: 11px; background: #ede9fe; color: #5b21b6;
+  padding: 2px 8px; border-radius: 99px; margin-left: 8px;
+  font-weight: 500; transition: opacity 0.3s;
 }
-
-/* ── Typing indicator ────────────────────────────────────────────────────── */
 .typing-indicator { display: flex; gap: 4px; padding: 10px; }
 .typing-indicator span {
-  width: 7px; height: 7px;
-  border-radius: 50%; background: #666;
+  width: 7px; height: 7px; border-radius: 50%; background: #666;
   animation: bounce 1.2s infinite ease-in-out;
 }
 .typing-indicator span:nth-child(2) { animation-delay: 0.2s; }
@@ -272,7 +215,7 @@
 </style>
 
 <script>
-  const API_URL    = "http://127.0.0.1:5000/chat";
+  const API_URL      = "http://127.0.0.1:5000/chat";
   const STUDENT_NAME = "Alex Borstein";
 
   const chatMessages = document.getElementById("chatMessages");
@@ -286,97 +229,84 @@
 
   const conversationHistory = [];
 
-  // ── Learning DNA ──────────────────────────────────────────────────────────
   const DNA_STYLES = {
-    visual:     { label: "Visual / Analogy",  emoji: "🎨", hint: "Use diagrams described in words, mental images, and real-world analogies. For example: 'Think of RAM like a desk — the bigger it is, the more things you can work on at once.'" },
-    sequential: { label: "Step-by-step",       emoji: "🔢", hint: "Break every explanation into numbered steps. Never skip a step. Use: Step 1: ... Step 2: ... and confirm understanding before moving on." },
-    direct:     { label: "Concise & Direct",   emoji: "⚡", hint: "Keep responses short and logical. No preamble, no filler. Get to the point immediately, then ask one focused guiding question." },
-    narrative:  { label: "Story / Examples",   emoji: "📖", hint: "Lead with a story, scenario, or relatable real-life situation before explaining the concept. Make abstract ideas concrete through examples." },
-    default:    { label: "Auto-detecting...",  emoji: "🧠", hint: "No clear style detected yet. Use a balanced approach and adapt based on how the student responds." }
+    visual:     { label: "Visual / Analogy",  emoji: "🎨", hint: "Use diagrams described in words, mental images, and real-world analogies." },
+    sequential: { label: "Step-by-step",       emoji: "🔢", hint: "Break every explanation into numbered steps. Never skip a step." },
+    direct:     { label: "Concise & Direct",   emoji: "⚡", hint: "Keep responses short and logical. No preamble, no filler." },
+    narrative:  { label: "Story / Examples",   emoji: "📖", hint: "Lead with a story or real-life scenario before explaining the concept." },
+    default:    { label: "Auto-detecting...",  emoji: "🧠", hint: "No clear style detected yet. Use a balanced approach and adapt." }
   };
 
-  const styleScores  = { visual: 0, sequential: 0, direct: 0, narrative: 0 };
-  let detectedStyle  = "default";   // from auto-detection
-  let manualStyle    = null;        // set by user pick (overrides auto)
-  let totalMessages  = 0;
+  const styleScores = { visual: 0, sequential: 0, direct: 0, narrative: 0 };
+  let detectedStyle = "default";
+  let manualStyle   = null;
+  let totalMessages = 0;
 
   const STYLE_SIGNALS = {
-    visual:     ["diagram", "picture", "visualize", "show me", "what does", "looks like", "imagine", "draw", "image", "visual"],
-    sequential: ["step by step", "steps", "how do i", "walk me through", "first", "then what", "next", "order", "process", "guide me"],
-    direct:     ["just tell me", "short answer", "quick", "simply", "briefly", "in one line", "tl;dr", "just give", "summarize"],
-    narrative:  ["example", "like what", "story", "real life", "analogy", "explain like", "eli5", "for instance", "scenario", "use a"]
+    visual:     ["diagram","picture","visualize","show me","what does","looks like","imagine","draw","image","visual"],
+    sequential: ["step by step","steps","how do i","walk me through","first","then what","next","order","process","guide me"],
+    direct:     ["just tell me","short answer","quick","simply","briefly","in one line","tl;dr","just give","summarize"],
+    narrative:  ["example","like what","story","real life","analogy","explain like","eli5","for instance","scenario","use a"]
   };
 
-  function activeStyle() {
-    return manualStyle || detectedStyle;
+  // Maps frontend style names → system prompt values
+  function styleToPrompt(style) {
+    const map = {
+      visual:     "VISUAL",
+      sequential: "STEP-BY-STEP",
+      narrative:  "STORYTELLING",
+      direct:     "DIRECT",
+      default:    "AUTO"
+    };
+    return map[style] || "AUTO";
   }
 
-  function setManualStyle(style) {
-    manualStyle = style;
-    updateDNAUI();
-  }
+  function activeStyle() { return manualStyle || detectedStyle; }
+
+  function setManualStyle(style) { manualStyle = style; updateDNAUI(); }
 
   function updateLearningDNA(message) {
     const lower = message.toLowerCase();
     totalMessages++;
-
     for (const [style, keywords] of Object.entries(STYLE_SIGNALS)) {
-      if (keywords.some(kw => lower.includes(kw))) {
-        styleScores[style]++;
-      }
+      if (keywords.some(kw => lower.includes(kw))) styleScores[style]++;
     }
-
     if (totalMessages >= 1) {
       const top = Object.entries(styleScores).sort((a, b) => b[1] - a[1])[0];
       if (top[1] > 0) detectedStyle = top[0];
     }
-
     if (!manualStyle) updateDNAUI();
   }
 
   function updateDNAUI() {
-    const style  = activeStyle();
-    const info   = DNA_STYLES[style];
-
+    const style = activeStyle();
+    const info  = DNA_STYLES[style];
     dnaStyleEl.textContent = `${info.emoji} ${info.label}`;
-
-    if (manualStyle) {
-      dnaSourceEl.textContent = "Manually selected";
-    } else if (detectedStyle !== "default") {
-      dnaSourceEl.textContent = "Auto-detected from your messages";
-    } else {
-      dnaSourceEl.textContent = "Watching your messages...";
-    }
-
+    dnaSourceEl.textContent = manualStyle
+      ? "Manually selected"
+      : detectedStyle !== "default" ? "Auto-detected from your messages" : "Watching your messages...";
     const fired = Object.entries(styleScores)
       .filter(([, v]) => v > 0)
       .map(([k, v]) => `${DNA_STYLES[k].emoji} ×${v}`)
       .join("  ");
     dnaSignalsEl.textContent = fired || "";
-
     chatDnaBadge.textContent = `${info.emoji} ${info.label}`;
-
-    // Highlight active picker button
     document.querySelectorAll(".dna-pick-btn").forEach(btn => {
       btn.classList.toggle("active", btn.dataset.style === style);
     });
   }
 
-  // Sidebar quick-switch buttons
   document.querySelectorAll(".dna-pick-btn").forEach(btn => {
     btn.addEventListener("click", () => {
       const s = btn.dataset.style;
       if (s === "default") {
-        manualStyle = null;       // go back to auto-detect
-        detectedStyle = "default";
+        manualStyle = null; detectedStyle = "default";
         Object.keys(styleScores).forEach(k => styleScores[k] = 0);
         totalMessages = 0;
       } else {
         setManualStyle(s);
       }
       updateDNAUI();
-
-      // Inject a system message in chat so the change is visible
       const info = DNA_STYLES[s === "default" ? "default" : s];
       const note = document.createElement("div");
       note.className = "bot dna-switch-note";
@@ -386,7 +316,6 @@
     });
   });
 
-  // ── Onboarding overlay ────────────────────────────────────────────────────
   document.querySelectorAll(".dna-option").forEach(btn => {
     btn.addEventListener("click", () => {
       document.querySelectorAll(".dna-option").forEach(b => b.classList.remove("selected"));
@@ -406,20 +335,17 @@
     updateDNAUI();
     appendBotMessage("Hello! I'm your Socratic tutor. I'll adapt to how you learn as we go. Share the topic you're working on and tell me what you've already tried — I'll guide you from there.");
   });
-  // ─────────────────────────────────────────────────────────────────────────
 
   function appendBotMessage(text) {
     const msg = document.createElement("div");
-    msg.className = "bot";
-    msg.innerText = text;
+    msg.className = "bot"; msg.innerText = text;
     chatMessages.appendChild(msg);
     chatMessages.scrollTop = chatMessages.scrollHeight;
   }
 
   function appendMessage(role, text) {
     const msg = document.createElement("div");
-    msg.className = role;
-    msg.innerText = text;
+    msg.className = role; msg.innerText = text;
     chatMessages.appendChild(msg);
     chatMessages.scrollTop = chatMessages.scrollHeight;
   }
@@ -448,9 +374,7 @@
 
     appendMessage("user", message);
     userInput.value = "";
-
     updateLearningDNA(message);
-
     conversationHistory.push({ role: "user", content: message });
     setLoading(true);
     showTyping();
@@ -460,11 +384,11 @@
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          message:              message,
-          history:              conversationHistory,
-          student_name:         STUDENT_NAME,
-          learning_style:       activeStyle(),
-          learning_style_hint:  DNA_STYLES[activeStyle()].hint
+          message:             message,
+          history:             conversationHistory,
+          student_name:        STUDENT_NAME,
+          selected_style:      styleToPrompt(activeStyle()),  // FIXED key + mapped value
+          learning_style_hint: DNA_STYLES[activeStyle()].hint
         })
       });
 
@@ -475,7 +399,6 @@
 
       const data  = await response.json();
       const reply = data.reply;
-
       conversationHistory.push({ role: "assistant", content: reply });
       hideTyping();
       appendMessage("bot", reply);
@@ -494,7 +417,6 @@
     if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); sendMessage(); }
   });
 
-  // Initialise badge display
   updateDNAUI();
 </script>
 
